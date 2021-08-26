@@ -40,7 +40,7 @@ const server = new ApolloServer({
 
     },
     endpoint: {
-        url: "http://localhost:9002"
+        url: "http://localhost:"+process.env.PORT
     },
     debug: true,
     tracing: true,
@@ -56,6 +56,8 @@ app.get("/", (req,res)=>{
         msg: "Hello Server"
     })
 })
+
+
 
 app.listen({ port: process.env.PORT || 3000 }, (url) => {
     console.log(`🚀  Server ready at http://localhost:${process.env.PORT || 3000}`);

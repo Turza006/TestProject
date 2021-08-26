@@ -8,7 +8,14 @@ export const typeDefs = gql`
         msg:String,
         code:String
     }
-    
+    type User{
+        _id:ID,
+        userName:String,
+        email:String,
+        status:String
+        msg:String,
+        code:String
+    }
     
 
     #    All Query
