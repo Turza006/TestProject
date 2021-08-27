@@ -1,10 +1,10 @@
-const {OAuth2Client} = require('google-auth-library');
+// const {OAuth2Client} = require('google-auth-library');
 import {createJWT} from "../../Helper/JWTCreator";
 import {User} from "../../Models/User";
 import {google_auth} from "../../Constant/GoogleOauth";
 
 
-export const UserloginByGoogle = async (parent, args, ctx, req)=>{
+export const UserLoginByGoogle = async (parent, args, ctx, req)=>{
     const ticket = await client.verifyIdToken({
         idToken: args.googleToken,
         audience: google_auth.googleAuth.clientID})
