@@ -1,7 +1,7 @@
 const {ApolloServer, gql} = require('apollo-server');
 
 export const typeDefs = gql`
-    directive @isAuthenticatedForSuperAdmin on FIELD_DEFINITION
+    directive @isAuthenticated on FIELD_DEFINITION
 
 
     type MsgWithCode{
@@ -67,7 +67,7 @@ export const typeDefs = gql`
     type Mutation{
         testMutation: MsgWithCode
         UserLoginByGoogle(googleToken:String):User
-        CreateInvoice(payload:InvoiceInput):MsgWithCode
+        CreateInvoice(payload:InvoiceInput):MsgWithCode @isAuthenticated
         
     }
 `

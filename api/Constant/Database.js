@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const elasticsearch = require('elasticsearch');
+const {DBLink} = require("../index");
 mongoose.Promise = global.Promise;
-//Note: Production
-// mongoose.connect('mongodb://13.250.5.183/AllBDNewsServer');
 
-mongoose.connect(process.env.DB, {
+
+
+mongoose.connect(DBLink, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

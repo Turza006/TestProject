@@ -3,10 +3,12 @@ const { ApolloServer, gql, PubSub } = require('apollo-server-express');
 const express = require('express');
 const db = require('./Constant/Database');
 import {verifyJwtToken} from "./Helper/JWTValidation";
-import {isAuthenticatedForSuperAdmin} from "./Graphql/Directives";
+import {isAuthenticated} from "./Graphql/Directives";
 
 require('dotenv').config();
 import {typeDefs, resolvers} from './Graphql';
+
+
 
 
 const app = express();
@@ -15,7 +17,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     schemaDirectives: {
-
+        isAuthenticated
     },
     context: async ({req,connection}) => {
         // const tokenEnsure = await ensureJWTToken(req);
@@ -57,6 +59,17 @@ app.get("/", (req,res)=>{
     })
 })
 
+
+
+export const DBLink = process.env.DB
+
+export const google_auth = {
+    'googleAuth' : {
+        'clientID': process.env.GoogleclientID,
+        'clientSecret': process.env.GoogleclientSecret,
+        'callbackURL': 'http://localhost:'+process.env.PORT
+    },
+}
 
 
 app.listen({ port: process.env.PORT || 3000 }, (url) => {

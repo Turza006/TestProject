@@ -1,7 +1,7 @@
 // const {OAuth2Client} = require('google-auth-library');
 import {createJWT} from "../../Helper/JWTCreator";
 import {User} from "../../Models/User";
-import {google_auth} from "../../Constant/GoogleOauth";
+import {google_auth} from "../../index";
 
 
 export const UserLoginByGoogle = async (parent, args, ctx, req)=>{

@@ -1,7 +1,7 @@
 const { SchemaDirectiveVisitor } = require("apollo-server-express");
 const { defaultFieldResolver } = require("graphql");
 
-class isAuthenticatedForSuperAdmin extends SchemaDirectiveVisitor {
+class isAuthenticated extends SchemaDirectiveVisitor {
     visitFieldDefinition(field) {
         const { resolve = defaultFieldResolver } = field;
 
@@ -28,4 +28,4 @@ class isAuthenticatedForSuperAdmin extends SchemaDirectiveVisitor {
 }
 
 
-export {isAuthenticatedForSuperAdmin}
+export {isAuthenticated}
