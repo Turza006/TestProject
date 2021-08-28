@@ -1,0 +1,70 @@
+
+For Login Authentication by Oauth2
+
+
+mutation{
+  UserLoginByGoogle(googleToken:""){
+    _id
+    userName
+    email
+    status
+    jwt
+    msg
+    code
+  }
+}
+
+-----------------------------------------------------------------------------------
+For Create Invoice
+
+mutation{
+  CreateInvoice(payload:{
+    invoiceItems:[{
+      itemName:"Pen",
+      price:10
+      qty:10
+    },
+    {
+      itemName:"Book"
+      price:100,
+      qty:5
+    }],
+    customer:{
+      email:"Someone@gmail.com"
+      userName:"Someone"
+    }
+  }){
+    msg
+    code
+  }
+}
+
+
+
+{
+  "Authorized":"AAAA UserJwt"
+}
+
+--------------------------------------------------------------------
+All Invoice Query
+
+{
+  AllInvoice(limit:500,offset:0){
+    Invoices{
+      _id
+      invoiceItems{
+        itemName
+        price
+        qty
+      }
+      customer{
+        email
+        userName
+      }
+      total
+    }
+    count
+    code
+    msg
+  }
+}
